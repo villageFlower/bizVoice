@@ -1,0 +1,33 @@
+<ion-content>
+  <ion-img style="width: 65vw; padding-top: 20%; display: block; margin:auto;" src="../../assets/icon/logo.png">
+  </ion-img>
+  <ion-img style="width: 20vw; padding-top: 20%; display: block; margin:auto;" src="../../assets/icon/tool.png">
+  </ion-img>
+  <ion-row style="padding-top: 30%;">
+    <ion-col>
+      <ion-row>
+        <ion-img style="width: 30vw; display: block; margin:auto;" src="../../assets/icon/changePassword.PNG" ></ion-img>
+      </ion-row>
+      <ion-row style="padding-top: 5%;">
+        <ion-button fill="clear" style=" display: block; margin:auto;"
+          (click)="presentToast('If you want to change your password, simply press the button to do so within a few steps!')">
+          <ion-img src="../../assets/icon/question.png"></ion-img>
+        </ion-button>
+      </ion-row>
+    </ion-col>
+
+    <ion-col>
+      <ion-row>
+        <ion-img style="width: 30vw; display: block; margin:auto;" src="../../assets/icon/selfHelp.PNG" [routerLink]="['../query']">
+        </ion-img>
+      </ion-row>
+      <ion-row style="padding-top: 5%;">
+        <ion-button fill="clear" style=" display: block; margin:auto;" (click)="presentToast('Need any help? 
+Press the button to look for your questions even ask for manual help!')">
+          <ion-img src="../../assets/icon/question.png"></ion-img>
+        </ion-button>
+      </ion-row>
+    </ion-col>
+
+  </ion-row>
+</ion-content>

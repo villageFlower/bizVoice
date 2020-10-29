@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "bizvoice-82491": {
+      "hosting": {
+        "app": [
+          "bizvoice-82491"
+        ]
+      }
+    }
+  }
+}
