@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
+import { Animation, AnimationController } from '@ionic/angular';
 
 @Component({
   selector: 'app-landing',
@@ -10,6 +11,7 @@ export class LandingPage implements OnInit {
 
   constructor(
     private toast: ToastController,
+    private animationCtrl: AnimationController
   ) { }
 
   ngOnInit() {
