@@ -43,7 +43,7 @@ export class LandingPage implements OnInit {
     toast.present();
   }
 
-  forgetPassword(){
+  resetPassword(){
     this.authService.resetPassword(localStorage.getItem('email'));
     this.toastController.create({
       message: 'Email sent successfully! Please follow the steps to reset your password!',
