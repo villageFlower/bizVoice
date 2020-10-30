@@ -19,6 +19,7 @@ export class AuthenticateService {
           err => reject(err))
     })
 
+
   }
 
   loginUser(value) {
