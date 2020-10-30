@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { Animation, AnimationController } from '@ionic/angular';
+import { AuthenticateService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-landing',
@@ -11,6 +12,8 @@ export class LandingPage implements OnInit {
 
   constructor(
     private toast: ToastController,
+    private authService: AuthenticateService,
+    private toastController: ToastController,
     private animationCtrl: AnimationController
   ) { }
 
@@ -23,6 +26,15 @@ export class LandingPage implements OnInit {
       duration: 3000
     });
     toast.present();
+  }
+
+  forgetPassword(){
+    this.authService.resetPassword(localStorage.getItem('email'));
+    this.toastController.create({
+      message: 'Email sent successfully! Please follow the steps to reset your password!',
+      duration: 5000,
+      position: 'bottom'
+    }).then(alert => alert.present());
   }
 
 }

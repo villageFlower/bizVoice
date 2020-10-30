@@ -1,13 +1,15 @@
 import { Injectable } from "@angular/core";
 import { AngularFireAuth } from '@angular/fire/auth';
+import * as firebase from 'firebase';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthenticateService {
 
   constructor(
-    private afAuth: AngularFireAuth
+    private afAuth: AngularFireAuth,
   ) { }
 
   registerUser(value) {
@@ -46,5 +48,13 @@ export class AuthenticateService {
 
   userDetails() {
     return this.afAuth.user
+  }
+
+  resetPassword(email){
+    return this.afAuth.sendPasswordResetEmail(email)
+  }
+
+  setUserEmail(email){
+    localStorage.setItem('email',email)
   }
 }

@@ -54,6 +54,7 @@ export class LoginPage implements OnInit {
         console.log(res);
         this.errorMessage = "";
         this.navCtrl.navigateForward('/landing');
+        this.authService.setUserEmail(this.validations_form.value.email);
       }, err => {
         this.errorMessage = err.message;
       })
