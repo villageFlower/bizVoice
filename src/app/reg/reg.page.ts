@@ -57,8 +57,8 @@ export class RegPage implements OnInit {
       })
   }
 
-  goLoginPage() {
-    this.navCtrl.navigateBack('');
+  goToLoginPage() {
+    this.navCtrl.navigateForward('/login');
   }
 
 }

@@ -32,6 +32,10 @@ const routes: Routes = [
     path: 'chat',
     loadChildren: () => import('./chat/chat.module').then( m => m.ChatPageModule)
   },
+  {
+    path: 'forgetpw',
+    loadChildren: () => import('./forgetpw/forgetpw.module').then( m => m.ForgetpwPageModule)
+  },
 
 ];
 

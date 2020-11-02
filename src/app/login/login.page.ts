@@ -64,4 +64,8 @@ export class LoginPage implements OnInit {
     this.navCtrl.navigateForward('/reg');
   }
 
+  goToforgetpwPage() {
+    this.navCtrl.navigateForward('/forgetpw');
+  }
+
 }
