@@ -1,9 +1,52 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>chat</ion-title>
+  <ion-toolbar style="text-align: center;">
+    <ion-title style="color:white">LIVE CHAT</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+
+
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content style="--ion-background-color: #9B908E;">
+
+  <ion-grid *ngFor="let message of messages">
+  <ion-row style="padding-top: 1vh;" *ngIf="message.reply === true">
+    <ion-col size="5">
+    <ion-item color="secondary" lines="none" style="--border-radius: 10px 10px 10px 0px;" slots="start">
+      <ion-label class="ion-text-wrap">{{message.content}}</ion-label>
+    </ion-item>
+  </ion-col>
+  </ion-row>
+
+  <ion-row style="padding-top: 1vh;" *ngIf="message.reply === false">
+    <ion-col size="7"></ion-col>
+    <ion-col size="5">
+    <ion-item color="success" lines="none" style="--border-radius: 10px 10px 0px 10px;" slots="end">
+      <ion-label class="ion-text-wrap">{{message.content}}</ion-label>
+    </ion-item>
+  </ion-col>
+  </ion-row>
+</ion-grid>
+
+
 
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar style="--border-width:2px; --background: #9B908E">
+    <ion-item style="--border-radius: 20px 20px 20px 20px;padding-left: 2vw;--background: white">
+      <ion-input color="black"type="text" required [(ngModel)]="input"></ion-input>
+    </ion-item>
+    <ion-buttons slot="end">
+      <ion-button (click)="clickSend()">
+        <ion-icon name="arrow-forward-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
