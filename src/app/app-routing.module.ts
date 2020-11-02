@@ -28,7 +28,11 @@ const routes: Routes = [
   {
     path: 'query',
     loadChildren: () => import('./query/query.module').then( m => m.QueryPageModule)
+  },  {
+    path: 'chat',
+    loadChildren: () => import('./chat/chat.module').then( m => m.ChatPageModule)
   },
+
 ];
 
 @NgModule({
