@@ -28,7 +28,8 @@ const routes: Routes = [
   {
     path: 'query',
     loadChildren: () => import('./query/query.module').then( m => m.QueryPageModule)
-  },  {
+  },
+  {
     path: 'chat',
     loadChildren: () => import('./chat/chat.module').then( m => m.ChatPageModule)
   },
@@ -36,6 +37,14 @@ const routes: Routes = [
     path: 'forgetpw',
     loadChildren: () => import('./forgetpw/forgetpw.module').then( m => m.ForgetpwPageModule)
   },
+  {
+    path: 'qna-detail',
+    loadChildren: () => import('./qna-detail/qna-detail.module').then( m => m.QnaDetailPageModule)
+  },  {
+    path: 'qna-solution',
+    loadChildren: () => import('./qna-solution/qna-solution.module').then( m => m.QnaSolutionPageModule)
+  },
+
 
 ];
 
