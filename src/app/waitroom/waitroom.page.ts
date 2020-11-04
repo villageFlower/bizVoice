@@ -5,10 +5,6 @@ export class WaitroomPage implements OnInit {
   queueNo:any;
   play=false;
 
-  
-  config: Phaser.Types.Core.GameConfig
-  phaserGame: Phaser.Game;
-
   constructor(
     private chat: ChatService,
   ) {
