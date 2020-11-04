@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { QnaSolutionPage } from './qna-solution.page';
+import { MyModalPage } from './my-modal.page';
 
-describe('QnaSolutionPage', () => {
-  let component: QnaSolutionPage;
-  let fixture: ComponentFixture<QnaSolutionPage>;
+describe('MyModalPage', () => {
+  let component: MyModalPage;
+  let fixture: ComponentFixture<MyModalPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ QnaSolutionPage ],
+      declarations: [ MyModalPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(QnaSolutionPage);
+    fixture = TestBed.createComponent(MyModalPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

@@ -16,10 +16,12 @@
       </ion-col>
     </ion-row>
     <ion-row *ngFor = "let qna of qnas">
-      <ion-card color="light" [routerLink]="['../qna-solution']">
+      <ion-card color="light" (click)="openModal(qna.id)">
         <ion-card-title style="padding: 15px;">
           {{qna.question}}
+          {{qna.id}}
         </ion-card-title>
+        <p *ngIf="dataReturned">{{dataReturned}}</p>
       </ion-card>
     </ion-row>
   </ion-grid>
