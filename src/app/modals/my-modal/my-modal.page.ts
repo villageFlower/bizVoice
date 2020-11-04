@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { 
-ModalController, 
-NavParams 
-} from '@ionic/angular';
+import { ModalController, NavParams } from '@ionic/angular';
+import { QnaService } from '../../services/qna.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-my-modal',
@@ -12,22 +11,32 @@ NavParams
 export class MyModalPage implements OnInit {
 
 
-  modalTitle: string;
-  modelId: number;
+  qnaId: any;
+  qna: any = {};
 
   constructor(
     private modalController: ModalController,
-    private navParams: NavParams
+    private navParams: NavParams,
+    private qnaService: QnaService,
+    private navCtrl: NavController,
+    
   ) { }
 
   ngOnInit() {
     console.table(this.navParams);
-    this.modelId = this.navParams.data.paramID;
-    this.modalTitle = this.navParams.data.paramTitle;
+    this.qnaId = this.navParams.data.qnaID;
+    this.qnaService.getOneUCQnA(this.qnaId).subscribe(result => {
+      this.qna = result;
+      });
   }
 
   async closeModal() {
     await this.modalController.dismiss();
+  }
+
+  async closeAndGoWaitroom() {
+    await this.modalController.dismiss();
+    this.navCtrl.navigateForward('/waitroom');
   }
 
 }

@@ -7,12 +7,22 @@
   <ion-grid>
     <ion-row>
       <ion-col text-center style="color: white;">
-        ID : {{modelId}}
+        <p style="font-size: large;">{{qna.question}}</p>
+        <br>
+        <p>{{qna.answer}}</p>
+        <div style="text-align: center;">
+          <p>{{qna.step1}}</p>
+          <p>{{qna.step2}}</p>
+          <p>{{qna.step3}}</p>
+          <p>{{qna.step4}}</p>
+          <p>{{qna.step5}}</p>
+        </div>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col text-center>
-        <ion-button (click)="closeModal()">Close Modal</ion-button>
+        <ion-button (click)="closeAndGoWaitroom()" shape="round" color="danger">Still unsure?</ion-button>
+        <ion-button (click)="closeModal()" shape="round" style="float: right;">It helps!</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
