@@ -1,3 +1,7 @@
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css'>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <ion-header>
   <ion-toolbar style="text-align: center;">
     <ion-title style="color:white">LIVE CHAT</ion-title>
@@ -15,24 +19,19 @@
 
 <ion-content style="--ion-background-color: #9B908E;">
 
-  <ion-grid *ngFor="let message of messages">
-  <ion-row style="padding-top: 1vh;" *ngIf="message.reply === true">
-    <ion-col size="5">
-    <ion-item color="secondary" lines="none" style="--border-radius: 10px 10px 10px 0px;" slots="start">
-      <ion-label class="ion-text-wrap">{{message.content}}</ion-label>
-    </ion-item>
-  </ion-col>
-  </ion-row>
+  <div *ngFor="let message of messages" style="padding-top: 1vh;">
 
-  <ion-row style="padding-top: 1vh;" *ngIf="message.reply === false">
-    <ion-col size="7"></ion-col>
-    <ion-col size="5">
-    <ion-item color="success" lines="none" style="--border-radius: 10px 10px 0px 10px;" slots="end">
-      <ion-label class="ion-text-wrap">{{message.content}}</ion-label>
-    </ion-item>
-  </ion-col>
-  </ion-row>
-</ion-grid>
+    <div class="bubble" *ngIf="message.reply === true" >
+      {{message.content}}
+    </div>
+   <br>
+    <div class="bubble2" *ngIf="message.reply === false">
+      {{message.content}}
+    </div>
+    <br>
+
+  </div>
+
 
 
 
@@ -41,7 +40,7 @@
 <ion-footer>
   <ion-toolbar style="--border-width:2px; --background: #9B908E">
     <ion-item style="--border-radius: 20px 20px 20px 20px;padding-left: 2vw;--background: white">
-      <ion-input color="black"type="text" required [(ngModel)]="input"></ion-input>
+      <ion-input color="black" type="text" required [(ngModel)]="input"></ion-input>
     </ion-item>
     <ion-buttons slot="end">
       <ion-button (click)="clickSend()">

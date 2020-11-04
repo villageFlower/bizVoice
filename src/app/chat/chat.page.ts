@@ -38,4 +38,8 @@ export class ChatPage implements OnInit {
     }
   }
 
+  check(){
+    this.chat.checkTech()
+  }
+
 }
