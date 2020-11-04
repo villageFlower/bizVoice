@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { QnaSolutionPage } from './qna-solution.page';
+import { MyModalPage } from './my-modal.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: QnaSolutionPage
+    component: MyModalPage
   }
 ];
 
@@ -14,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class QnaSolutionPageRoutingModule {}
+export class MyModalPageRoutingModule {}

@@ -15,4 +15,8 @@ export class QnaService {
   getOneUCQnA(id){
     return this.firestore.collection('ucqnaCollection').doc(id).valueChanges()
   }
+
+  setqnaID(id){
+    localStorage.setItem('qnaID',id)
+  }
 }

@@ -40,9 +40,10 @@ const routes: Routes = [
   {
     path: 'qna-detail',
     loadChildren: () => import('./qna-detail/qna-detail.module').then( m => m.QnaDetailPageModule)
-  },  {
-    path: 'qna-solution',
-    loadChildren: () => import('./qna-solution/qna-solution.module').then( m => m.QnaSolutionPageModule)
+  },
+  {
+    path: 'my-modal',
+    loadChildren: () => import('./modals/my-modal/my-modal.module').then( m => m.MyModalPageModule)
   },
 
 

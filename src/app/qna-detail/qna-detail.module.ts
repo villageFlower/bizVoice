@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { QnaDetailPageRoutingModule } from './qna-detail-routing.module';
-
+import { MyModalPageModule } from '../modals/my-modal/my-modal.module';
 import { QnaDetailPage } from './qna-detail.page';
 
 @NgModule({
@@ -13,7 +13,8 @@ import { QnaDetailPage } from './qna-detail.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    QnaDetailPageRoutingModule
+    QnaDetailPageRoutingModule,
+    MyModalPageModule
   ],
   declarations: [QnaDetailPage]
 })

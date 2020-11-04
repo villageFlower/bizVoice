@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { QnaSolutionPageRoutingModule } from './qna-solution-routing.module';
+import { MyModalPageRoutingModule } from './my-modal-routing.module';
 
-import { QnaSolutionPage } from './qna-solution.page';
+import { MyModalPage } from './my-modal.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    QnaSolutionPageRoutingModule
+    MyModalPageRoutingModule
   ],
-  declarations: [QnaSolutionPage]
+  declarations: [MyModalPage]
 })
-export class QnaSolutionPageModule {}
+export class MyModalPageModule {}
