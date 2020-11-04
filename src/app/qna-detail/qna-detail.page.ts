@@ -34,7 +34,7 @@ export class QnaDetailPage implements OnInit {
     const modal = await this.modalController.create({
       component: MyModalPage,
       componentProps: {
-        
+        "qnaID": localStorage.getItem("qnaID"),
       }
     });
 

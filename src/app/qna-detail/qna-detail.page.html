@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button [routerLink]="['../query']">
-      <ion-icon name="arrow-back-circle-outline" style="color: white;"></ion-icon>
+      <ion-icon name="arrow-back-circle-outline" style="color: white; font-size: xx-large;"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -12,16 +12,15 @@
   <ion-grid>
     <ion-row>
       <ion-col style="text-align: center;">
-        <h2 style="color: white;">UC Account Issue</h2>
+        <h1 style="color: white;">UC Account Issue</h1>
       </ion-col>
     </ion-row>
     <ion-row *ngFor = "let qna of qnas">
       <ion-card color="light" (click)="openModal(qna.id)">
         <ion-card-title style="padding: 15px;">
           {{qna.question}}
-          {{qna.id}}
+          
         </ion-card-title>
-        <p *ngIf="dataReturned">{{dataReturned}}</p>
       </ion-card>
     </ion-row>
   </ion-grid>
