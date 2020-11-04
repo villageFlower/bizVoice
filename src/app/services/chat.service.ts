@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
-import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -44,6 +43,7 @@ export class ChatService {
     return this.fire.collection("tech", ref => ref.where("online", "==", true).where("ava", "==", true)).valueChanges({ idField: "id" }).subscribe(data => {
       let staffs = data;
       if (staffs.length != 0) {
+        localStorage.setItem("connectedStaff",staffs[0].id)
         this.startChat(staffs[0].id)
       }
     })
@@ -63,13 +63,16 @@ export class ChatService {
       }).catch(error => {
         if (error) { this.presentToast("failed to connect, please try again later") }
       }).then(data => {
-        this.fire.collection("tech").doc(staff).update({ ava: "false" }).then(data => { this.quitQueue().then(data => { this.router.navigate(["./chat"]) }) })
+        this.fire.collection("tech").doc(staff).update({ ava: false, current_room: localStorage.getItem("roomId") }).then(data => { this.quitQueue().then(data => { this.router.navigate(["./chat"]) }) })
       })
     })
   }
 
-  public endChat(staff) {
-    return this.fire.collection("tech")
+  public endChat() {
+    return this.fire.collection("tech").doc(localStorage.getItem("connectedStaff")).update({ava:true , online:false}).then(data => {
+      localStorage.removeItem("roomId");
+      localStorage.removeItem("connectedStaff")
+    })
   }
 
   public sendMessage(content) {

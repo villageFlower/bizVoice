@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ChatService } from '../services/chat.service';
 
+
+@Component({
+  selector: 'app-waitroom',
+  templateUrl: './waitroom.page.html',
+  styleUrls: ['./waitroom.page.scss'],
+})
 export class WaitroomPage implements OnInit {
   queueNo:any;
   play=false;

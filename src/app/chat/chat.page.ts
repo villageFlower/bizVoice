@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ChatService } from '../services/chat.service';
 
 @Component({
@@ -13,6 +14,7 @@ export class ChatPage implements OnInit {
 
   constructor(
     private chat: ChatService,
+    private route: Router,
 
   ) {    
 
@@ -40,6 +42,13 @@ export class ChatPage implements OnInit {
 
   check(){
     this.chat.checkTech()
+  }
+
+  end(){
+    this.chat.endChat().then(data => {
+      this.route.navigate(["./landing"])
+
+    })
   }
 
 }
