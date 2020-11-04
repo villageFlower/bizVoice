@@ -1,12 +1,13 @@
 
-<ion-header *ngIf="play == true">
+<ion-header>
   <ion-toolbar style="text-align: center;">
     <ion-title style="color:white">{{queueNo}} customers infront of you</ion-title>
   </ion-toolbar>
 </ion-header>
+
+
 <ion-content>
-  <p class="enterWord" style="text-align: center; padding-top: 30%;">Connecting to our technecian...</p>
-  <p style="text-align: center; padding-top: 30%;">{{queueNo}} customers infront of you</p>
-  <ion-button style="width: fit-content; display: block; margin:auto;" (click)="clickPlay()">Wanna play a mini game while waiting?</ion-button>>
+  <div id="game"></div>
+  <ion-button style="width: fit-content; display: block; margin:auto;">Cancel Queue</ion-button>
 </ion-content>
 
