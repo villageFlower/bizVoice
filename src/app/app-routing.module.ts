@@ -45,6 +45,10 @@ const routes: Routes = [
     path: 'my-modal',
     loadChildren: () => import('./modals/my-modal/my-modal.module').then( m => m.MyModalPageModule)
   },
+  {
+    path: 'waitroom',
+    loadChildren: () => import('./waitroom/waitroom.module').then( m => m.WaitroomPageModule)
+  },
 
 
 ];

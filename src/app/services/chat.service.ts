@@ -46,10 +46,6 @@ export class ChatService {
       if (staffs.length != 0) {
         this.startChat(staffs[0].id)
       }
-      {
-        path: 'waitroom',
-        loadChildren: () => import('./waitroom/waitroom.module').then( m => m.WaitroomPageModule)
-      },
     })
   }
 
