@@ -48,7 +48,11 @@ const routes: Routes = [
   {
     path: 'waitroom',
     loadChildren: () => import('./waitroom/waitroom.module').then( m => m.WaitroomPageModule)
+  },  {
+    path: 'prize',
+    loadChildren: () => import('./prize/prize.module').then( m => m.PrizePageModule)
   },
+
 
 
 

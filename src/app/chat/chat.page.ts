@@ -48,7 +48,7 @@ export class ChatPage implements OnInit {
     this.chat.endChat().then(data => {
       localStorage.removeItem("roomId");
       localStorage.removeItem("connectedStaff")
-      this.route.navigate(["./landing"]);
+      this.route.navigate(["./prize"]);
     })
   }
 

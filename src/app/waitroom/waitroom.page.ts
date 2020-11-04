@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChatService } from '../services/chat.service';
 import * as Phaser from 'phaser';
-import { bindCallback } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 class GameScene extends Phaser.Scene {
@@ -106,6 +106,7 @@ export class WaitroomPage implements OnInit {
 
   constructor(
     private chat: ChatService,
+    private router:Router,
   ) {
     this.config = {
       type: Phaser.AUTO,
@@ -121,6 +122,7 @@ export class WaitroomPage implements OnInit {
   }
 
   ngOnInit() {
+    this.chat.presentToast("You can play a game while we connect you to our technician")
     this.phaserGame = new Phaser.Game(this.config);
     this.chat.joinQueue();
     this.chat.checkQueue().subscribe(data => {
@@ -135,7 +137,13 @@ export class WaitroomPage implements OnInit {
         }
       }
     })
+  }
 
+  cancelQueue(){
+    this.chat.quitQueue().then(data => {
+      this.chat.presentToast("canceled queuing")
+      this.router.navigate(["./query"])
+    })
   }
 
 
