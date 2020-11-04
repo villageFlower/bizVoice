@@ -69,10 +69,7 @@ export class ChatService {
   }
 
   public endChat() {
-    return this.fire.collection("tech").doc(localStorage.getItem("connectedStaff")).update({ava:true , online:false}).then(data => {
-      localStorage.removeItem("roomId");
-      localStorage.removeItem("connectedStaff")
-    })
+    return this.fire.collection("tech").doc(localStorage.getItem("connectedStaff")).update({ava:true , online:false, current_room:""})
   }
 
   public sendMessage(content) {
