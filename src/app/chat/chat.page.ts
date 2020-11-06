@@ -40,9 +40,7 @@ export class ChatPage implements OnInit {
     }
   }
 
-  check(){
-    this.chat.checkTech()
-  }
+ 
 
   end(){
     this.chat.endChat().then(data => {
