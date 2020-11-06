@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ChatService } from '../services/chat.service';
 import * as Phaser from 'phaser';
 import { Router } from '@angular/router';
+import { NativeAudio } from '@ionic-native/native-audio/ngx';
 
 
 class GameScene extends Phaser.Scene {
@@ -28,9 +29,9 @@ class GameScene extends Phaser.Scene {
       frameQuantity: 2,
       gridAlign: { width: 4, height: 6, cellWidth: 64, cellHeight: 32, x: (window.innerWidth - 192) / 2, y: 100 }
     });
-    this.ball = this.physics.add.image(window.innerWidth/2, window.innerHeight/2-50, 'assets', 'ball1').setCollideWorldBounds(true).setBounce(1);
+    this.ball = this.physics.add.image(window.innerWidth / 2, window.innerHeight / 2 - 50, 'assets', 'ball1').setCollideWorldBounds(true).setBounce(1);
     this.ball.setData('onPaddle', true);
-    this.paddle = this.physics.add.image(window.innerWidth/2, window.innerHeight/2, 'assets', 'paddle1').setImmovable();
+    this.paddle = this.physics.add.image(window.innerWidth / 2, window.innerHeight / 2, 'assets', 'paddle1').setImmovable();
     this.physics.add.collider(this.ball, this.bricks, this.hitBrick, null, this);
     this.physics.add.collider(this.ball, this.paddle, this.hitPaddle, null, this);
     this.input.on('pointermove', function (pointer) {
@@ -40,8 +41,7 @@ class GameScene extends Phaser.Scene {
       }
     }, this);
     this.input.on('pointerup', function (pointer) {
-      if (this.ball.getData('onPaddle'))
-      {
+      if (this.ball.getData('onPaddle')) {
         this.ball.setVelocity(-75, -300);
         this.ball.setData('onPaddle', false);
       }
@@ -64,7 +64,7 @@ class GameScene extends Phaser.Scene {
 
   resetBall() {
     this.ball.setVelocity(0);
-    this.ball.setPosition(this.paddle.x,  window.innerHeight/2-50);
+    this.ball.setPosition(this.paddle.x, window.innerHeight / 2 - 50);
     this.ball.setData('onPaddle', true);
   }
 
@@ -103,15 +103,17 @@ export class WaitroomPage implements OnInit {
   queueNo: any;
   phaserGame: Phaser.Game;
   config: Phaser.Types.Core.GameConfig;
+  player = new Audio;
 
   constructor(
     private chat: ChatService,
-    private router:Router,
+    private router: Router,
+    private audio: NativeAudio
   ) {
     this.config = {
       type: Phaser.AUTO,
       width: window.innerWidth,
-      height: window.innerHeight/3*2,
+      height: window.innerHeight / 3 * 2,
       physics: {
         default: 'arcade'
       },
@@ -119,16 +121,24 @@ export class WaitroomPage implements OnInit {
       backgroundColor: '#000000',
       scene: GameScene
     };
+
   }
 
   ngOnInit() {
+    // this.audio.preloadSimple('1', 'assets/gameMusic.mp3').then();
+    // this.audio.play('1');
+    // this.audio.loop('1').then();
+    this.player.src = "assets/gameMusic.mp3";
+    this.player.play()
     this.chat.presentToast("You can play a game while we connect you to our technician")
     this.phaserGame = new Phaser.Game(this.config);
     this.chat.joinQueue();
     this.chat.checkQueue().subscribe(data => {
       let queue = data;
       if (queue[0].id == localStorage.getItem("email")) {
-        this.chat.checkTech()
+        // this.audio.stop('1').then();
+        // this.audio.unload('1').then();
+        this.chat.checkTech(this.player);
       } else {
         for (let i = 0; i < queue.length; i++) {
           if (queue[i].id == localStorage.getItem("email")) {
@@ -139,10 +149,18 @@ export class WaitroomPage implements OnInit {
     })
   }
 
-  cancelQueue(){
+  clickPlay(){
+    this.player.play()
+  }
+
+  cancelQueue() {
     this.chat.quitQueue().then(data => {
-      this.chat.presentToast("canceled queuing")
+      this.chat.presentToast("canceled queuing");
+      // this.audio.stop('1').then();
+      // this.audio.unload('1').then();
+      this.player.pause()
       this.router.navigate(["./query"])
+
     })
   }
 
