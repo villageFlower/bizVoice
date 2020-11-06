@@ -39,11 +39,12 @@ export class ChatService {
     return this.fire.collection("queue", ref => ref.orderBy("time_in", "asc")).valueChanges({ idField: "id" })
   }
 
-  public checkTech() {
+  public checkTech(player) {
     return this.fire.collection("tech", ref => ref.where("online", "==", true).where("ava", "==", true)).valueChanges({ idField: "id" }).subscribe(data => {
       let staffs = data;
       if (staffs.length != 0) {
-        localStorage.setItem("connectedStaff",staffs[0].id)
+        localStorage.setItem("connectedStaff",staffs[0].id);
+        player.pause()
         this.startChat(staffs[0].id)
       }
     })
