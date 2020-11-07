@@ -1,0 +1,19 @@
+<ion-content>
+  <div style="margin-top: 30vh;">
+    <h3 style="color: wheat; text-align: center;">How was our app?<br>Rate us to win a chance to iPhone 20!</h3>
+    <div style="width: fit-content; margin:auto;padding: 10px;">
+      <ion-icon style="zoom: 200%;" name="star" *ngFor="let num of [1,2,3,4,5]" (click)="rate(num)"
+        [ngStyle]="{'color':getColor(num)}"></ion-icon>
+    </div>
+    <div *ngIf="feedback == true" style="width: fit-content; margin:auto;padding: 10px;text-align: center; ">
+    <ion-item  style="width: 80vw;">
+      <ion-label style="text-align: center;" position="stacked" color="primary">Your suggestions</ion-label>
+      <ion-input [(ngModel)]="content" style="text-align: center;" color="light" placeholder="What yoou dislike about our app"></ion-input>
+    </ion-item>
+  </div>
+    <ion-button color="success" style="width: fit-content; display: block; margin:auto; margin-top: 5%;"
+      *ngIf="allow == true" (click)="clickSubmit()">Submit</ion-button>
+    <ion-button color="warning" style="width: fit-content; display: block; margin:auto; margin-top: 5%;"
+      *ngIf="allow == false" (click)="clickCancel()">rather not rate</ion-button>
+  </div>
+</ion-content>

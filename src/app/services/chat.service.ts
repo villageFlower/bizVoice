@@ -81,6 +81,14 @@ export class ChatService {
     })
   }
 
+  public rate(num,content){
+    return this.fire.collection("rate").add({
+      rating:num,
+      user_email: localStorage.getItem("email"),
+      feedback: content
+    })
+  }
+
 
 
 

@@ -52,6 +52,10 @@ const routes: Routes = [
     path: 'prize',
     loadChildren: () => import('./prize/prize.module').then( m => m.PrizePageModule)
   },
+  {
+    path: 'rate',
+    loadChildren: () => import('./rate/rate.module').then( m => m.RatePageModule)
+  },
 
 
 
