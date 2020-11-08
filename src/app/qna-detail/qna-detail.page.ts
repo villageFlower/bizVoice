@@ -15,14 +15,22 @@ export class QnaDetailPage implements OnInit {
   qnas: any = [];
   id: any;
   qna:any ={};
+  cate:any;
 
-  constructor(private qnaService : QnaService, public modalController: ModalController,private firestore: AngularFirestore) {
-      qnaService.getAllUCQnA().subscribe((data) => {this.qnas = data;});
+  constructor(
+    private qnaService : QnaService,
+    public modalController: ModalController,
+    private firestore: AngularFirestore
+    ) {
+
    }
 
   ngOnInit() {
-    this.qnaService.getAllUCQnA();
-    console.log((this.qnas))
+    this.cate=localStorage.getItem("qna")
+    this.qnaService.getAllUCQnA(this.cate).subscribe(data => {
+      this.qnas = data;
+      console.log((this.qnas));
+    })
   }
 
   async openModal(id) {

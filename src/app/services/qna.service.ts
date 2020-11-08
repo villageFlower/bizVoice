@@ -8,8 +8,8 @@ export class QnaService {
 
   constructor(private firestore: AngularFirestore) { }
 
-  getAllUCQnA(){
-    return this.firestore.collection('ucqnaCollection').valueChanges({idField:'id'})
+  getAllUCQnA(cate){
+    return this.firestore.collection('ucqnaCollection', ref => ref.where("cate", "==", cate)).valueChanges({idField:'id'})
   }
 
   getOneUCQnA(id){

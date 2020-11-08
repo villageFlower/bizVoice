@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Animation, AnimationController } from '@ionic/angular';
 
 
@@ -12,7 +13,8 @@ export class QueryPage implements OnInit {
 
 
   constructor(
-    private animationCtrl: AnimationController
+    private animationCtrl: AnimationController,
+    private router: Router
   ) {
   }
 
@@ -25,7 +27,7 @@ export class QueryPage implements OnInit {
       .iterations(1)
       .keyframes([
         { offset: 0, transform: 'translateX(-500px)', opacity: "0.2" },
-        { offset: 1, transform: 'translateX(0px))' , opacity: "1" }
+        { offset: 1, transform: 'translateX(0px))', opacity: "1" }
       ])
       .play();
 
@@ -43,5 +45,9 @@ export class QueryPage implements OnInit {
       ])
       .play()
   }
+  clickGo(cate) {
+    localStorage.setItem("qna",cate);
+    this.router.navigate(['../qna-detail']);
 
+  }
 }

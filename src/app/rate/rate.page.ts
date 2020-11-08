@@ -37,6 +37,7 @@ export class RatePage implements OnInit {
         this.feedback = true;
       case 2:
         this.feedback = true;
+        
     }
   }
 
